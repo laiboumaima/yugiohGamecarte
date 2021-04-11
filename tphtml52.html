@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+ <meta charset="utf-8" />
+ <title>tphtml5_ card game_</title>
+ <link href="http://fonts.cdnfonts.com/css/games" rel="stylesheet">
+                
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <link rel="stylesheet" href="style.css">
+ <style>
+  @import url('http://fonts.cdnfonts.com/css/games');
+</style>
+
+    <script>
+       var b = 0;
+    
+    function allowDrop(ev) {
+      ev.preventDefault();
+    }
+    
+    function drag(ev) {
+      ev.dataTransfer.setData("Text", ev.target.id);
+      
+    }
+    
+    function drop(ev) {
+      var data = ev.dataTransfer.getData("Text");
+       ev.target.appendChild(document.getElementById(data));
+       
+       switch (data) {
+  case "drag1":
+     b++;
+    break;
+  case "drag2":
+    b--;
+    break;
+  case "drag3":
+     b--;
+    break;
+  
+}
+score01.innerHTML = b;
+}
+    function drop1(ev) {
+      var data = ev.dataTransfer.getData("Text");
+       ev.target.appendChild(document.getElementById(data));
+       
+       switch (data) {
+  case "drag3":
+     b++;
+    break;
+  case "drag1":
+    b--;
+    break;
+  case "drag2":
+     b--;
+    break;
+  
+}score01.innerHTML = b;}
+function drop2(ev) {
+      var data = ev.dataTransfer.getData("Text");
+       ev.target.appendChild(document.getElementById(data));
+         switch (data) {
+  case "drag2":
+     b++;
+    break;
+  case "drag3":
+    b--;
+    break;
+  case "drag1":
+     b--;
+    break;
+  
+}
+score01.innerHTML = b;}
+function submit() {
+  var back=document.getElementById("back");
+back.classList.add('header');
+
+var div = document.createElement("DIV");
+document.body.appendChild(div);
+div.classList.add('message');
+
+
+
+if (b > 2) {
+
+div.innerHTML="Congratulations"+ " your score "+ b;
+
+}else{
+
+  div.innerHTML="try again your score " + b;
+}
+}
+
+
+
+
+     </script>
+    </head>
+    <body>
+      <div id="back" class="">
+      <p class="h1">YU GI OH</p>
+  <div class="score"> <p>Score: <text id="score01">0</text></p></div>    
+  
+    <img  class="card"  id="drag1" draggable="true" ondragstart="drag(event)" src="C:\Users\Moonlight\Desktop\siws2\WEB2\img\card11.jpg"/>
+    <img class="card" id="drag2" draggable="true" ondragstart="drag(event)" src="C:\Users\Moonlight\Desktop\siws2\WEB2\img\card2.jpg"/>
+    <img id="drag3" class="card " draggable="true" ondragstart="drag(event)" src="C:\Users\Moonlight\Desktop\siws2\WEB2\img\card3.jpg"/>
+    <div class="div0">
+    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">ATK:Strong
+    </div>
+    <div id="div2" ondrop="drop1(event)" ondragover="allowDrop(event)">ATK:Super Strong</div>
+    <div id="div3" ondrop="drop2(event)" ondragover="allowDrop(event)">ATK:SAVAGE </div>
+  </div>
+  <button class="button" onclick="submit()">Score</button>
+
+</div>
+  <div class="footer">
+
+
+
+  </div>
+   
+ </body>
+</html>
